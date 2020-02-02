@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BooksDatabase</title>
+    <link rel="icon" href="images/favicon.svg">
+    <link rel="stylesheet" href="styles/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/css/main.css">
+    <script src="scripts/jquery/jquery-3.4.1.min.js"></script>
+</head>
+
+<body>
+    <div id="log-form">
+        <form class="logreg-form" id="login-form" action="login.php" method="post">
+
+            <div class="btn-quit" id="login-quit"><i class="material-icons"
+                    style="font-size:4vh; margin: -0.8vh;">arrow_back</i></div>
+            <h3>Proszę się zalogować</h3>
+
+            <label for="username">Nazwa użytkownika:</label>
+            <input class="form-control" id="log-username" name="login" placeholder="Podaj swoją nazwę użytkownika"
+                type="text" />
+
+            <label for="password">Hasło:</label>
+            <input class="form-control" id="log-password" name="password" placeholder="Podaj swoje hasło"
+                type="password" />
+
+            <input class="btn btn-primary" id="lgn-button" name="loginButton" type="submit" value="Zaloguj się" />
+
+        </form>
+    </div>
+
+    <div id="reg-form">
+
+        <form class="logreg-form" id="register-form">
+
+            <div class="btn-quit" id="register-quit"><i class="material-icons"
+                    style="font-size:4vh; margin: -0.8vh;">arrow_back</i></div>
+            <h3>Proszę się zarejestrować</h3>
+
+            <label for="username">Nazwa użytkownika:</label>
+            <input class="form-control" id="reg-username" name="username" placeholder="Wpisz nazwę użytkownika tutaj"
+                type="text" />
+            <div id="user-feedback" class="alert-danger"></div>
+
+            <label for="password">Hasło:</label>
+            <input class="form-control" id="password" name="password" placeholder="Podaj nowe hasło" type="password" />
+            <input class="form-control" id="password-repeat" name="password" placeholder="Powtórz hasło"
+                type="password" />
+            <div id="pass-feedback" class="alert-danger"></div>
+            <div id="pass-repeat-feedback" class="alert-danger"></div>
+
+            <input type="checkbox" class="custom-control-input" name="reg" id="customCheck" name="example1">
+            <label class="custom-control-label" for="customCheck" id="customCheckL">Akceptuje warunki <a
+                    href="#reg">regulaminu</a></label>
+
+            <div class="g-recaptcha" data-sitekey="6LfQ9dMUAAAAAMU88oc82ZCGnG1LjzxL_ZQ5j3Lv"></div>
+
+            <input class="btn btn-primary" id="reg-button" type="submit" value="Zarejestruj się" />
+
+        </form>
+        <header class="container-fluid">
+            <div class="row">
+                <div class="col"><img src="images/booksDatabase.svg" alt="booksDatabaseLogo"></div>
+                <nav class="col">
+                    <button id="btn-login">Zaloguj</button>
+                    <button id="btn-register">Zarejestruj</button>
+                </nav>
+            </div>
+        </header>
+        <div id="content" class="container">
+            <div id="description" class="col">
+                <h1>Witaj na stronie BooksDatabase</h1>
+                <p>Aplikacja została stworzona na potrzeby własne i służy do zarządzania bazą danych książek (dodawanie
+                    książek, ich autorów, opisów itp.). Jest to mój pierwszy projekt tego typu, jego głównym celem
+                    oprócz
+                    potrzeby posiadania przeze mnie tego typu aplikacji było nauczenie się technik i bibliotek takich
+                    jak
+                    JQuery, AJAX czy Bootstrap.</p>
+            </div>
+            <div id="reg" class="col">
+                <h2>Regulamin</h2>
+                <p>Strona stworzona do użytku własnego, jeżeli chcesz możesz z niej korzystać, aczkolwiek nie odpowiadam
+                    za
+                    zabezpieczanie twoich danych i w przypadku jakiejkolwiek ich utraty (np. przy usuwaniu bazy danych)
+                    nie
+                    gwarantuje ich dalszej archiwizacji. Nie ponoszę też odpowiedzialności za dane umieszczane przez
+                    użytkowników. Dane które łamią polskie prawo będą usuwane. W razie jakichkolwiek problemów pisz do
+                    mnie
+                    na email: <a href="mailto:pomoc@krok.pl">pomoc@jkrok.pl</a>.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="styles/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+header
+{
+    text-align: center;
+    div
+    {
+        background-color: $colorDark;
+    }
+
+    img
+    {
+        height: 40px;
+        margin:
+        {
+            top: 10px;
+            bottom: 10px;
+        }
+    }
+    nav
+    {
+        button:hover
+        {
+            color: $colorDark;
+        }
+        #btn-login
+        {
+            border-color: $colorRed;
+        }
+        #btn-login:hover
+        {
+            background-color: $colorRed;
+        }
+        #btn-register
+        {
+            border-color: $colorGray;
+        }
+        #btn-register:hover
+        {
+            background-color: $colorGray;
+        }
+    }
+}

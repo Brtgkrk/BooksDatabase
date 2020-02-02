@@ -1,0 +1,183 @@
+var allBooks;
+var allAuthors;
+var allGenres;
+
+var bookSortKey = 'title';
+var bookSortOrder = true;
+
+var findText = "";
+var findCat = "title";
+
+var searchBook = "Nazwie książki";
+var searchAuthor = "Autorze";
+var searchPages = "Liczbie stron";
+var searchGenre = "Gatunku";
+var searchCompletion = "Liczbie przeczytanych stron";
+var searchRating = "Ocenie";
+var searchDescription = "Opisie"; //Ad autodetection
+
+$(document).ready(function() {
+    downloadBooks();
+    downloadAuthors();
+    downloadGenres();
+});
+
+$("#show").on('submit', function(e) {
+    e.preventDefault();
+    var details = $('#show').serialize();
+    $.post('showBooks.php', details, function(data){
+        allBooks = JSON.parse(data);
+        showBooks(allBooks);
+    });
+});
+
+$("#find-book").on('keyup', function() {
+    findText = $("#find-book").val().toLocaleLowerCase();
+    showBooks(allBooks);
+});
+
+$('#serach-select').change(function() {
+    findCat = $(this).val();
+    showBooks(allBooks);
+});
+
+function showBooks(responseObject)
+{
+    allBooks.sort(compareValues(bookSortKey, bookSortOrder));
+
+    var newContent = '';
+
+        responseObject.forEach(function(item, index) {
+
+            var toFind;
+
+            if (findCat == searchAuthor) toFind = item.a_name;
+            else if (findCat == searchPages) toFind = item.pages;
+            else if (findCat == searchGenre) toFind = item.g_name;
+            else if (findCat == searchCompletion) toFind = item.completion;
+            else if (findCat == searchRating) toFind = item.rating;
+            else if (findCat == searchDescription) toFind = item.description;
+            else toFind = item.title;
+
+            if(toFind.toLocaleLowerCase().indexOf(findText) >= 0 || findText == undefined || findText == "")
+            {
+                newContent += "<tr data-toggle='modal' data-target='#book-modal' onclick='bookEdit(\"" + item.bookID + "\")'>";
+                newContent += "<td class='title'>"+item.title+"</td>";
+                newContent += "<td class='a_name'>"+item.a_name+"</td>";
+                newContent += "<td class='pages'>"+item.pages+"</td>";
+                newContent += "<td class='g_name'>"+item.g_name+"</td>";
+                newContent += "<td class='completion'>"+item.completion+"</td>";
+                newContent += "<td class='rating'>"+item.rating+"</td>";
+                newContent += "<td class='description'>"+item.description+"</td>";
+                newContent += "</tr>";
+            }
+
+        });
+
+        $('#content').hide();
+        $('#content').html(newContent);
+        $('#content').fadeIn('fast');
+}
+
+//Sort
+
+$('#sort-title').on('click', function() {
+    if (bookSortKey == "title") bookSortOrder = !bookSortOrder;
+    else
+    {
+        bookSortKey = 'title';
+        bookSortOrder = true;
+    }
+    showBooks(allBooks);
+});$('#sort-author').on('click', function() {
+    if (bookSortKey == "author") bookSortOrder = !bookSortOrder;
+    else
+    {
+        bookSortKey = 'author';
+        bookSortOrder = true;
+    }
+    showBooks(allBooks);
+});$('#sort-pages').on('click', function() {
+    if (bookSortKey == "pages") bookSortOrder = !bookSortOrder;
+    else
+    {
+        bookSortKey = 'pages';
+        bookSortOrder = true;
+    }
+    showBooks(allBooks);
+});$('#sort-genre').on('click', function() {
+    if (bookSortKey == "genre") bookSortOrder = !bookSortOrder;
+    else
+    {
+        bookSortKey = 'genre';
+        bookSortOrder = true;
+    }
+    showBooks(allBooks);
+});$('#sort-completion').on('click', function() {
+    if (bookSortKey == "completion") bookSortOrder = !bookSortOrder;
+    else
+    {
+        bookSortKey = 'completion';
+        bookSortOrder = true;
+    }
+    showBooks(allBooks);
+});$('#sort-rating').on('click', function() {
+    if (bookSortKey == "rating") bookSortOrder = !bookSortOrder;
+    else
+    {
+        bookSortKey = 'rating';
+        bookSortOrder = true;
+    }
+    showBooks(allBooks);
+});
+
+//Sorting algorithm
+
+function compareValues(key, order = true) {
+  return function innerSort(a, b) {
+    if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) return 0;
+    const comparison = a[key].localeCompare(b[key]);
+
+    return (
+      (order === false) ? (comparison * -1) : comparison
+    );
+  };
+}
+
+//Download data
+
+function downloadBooks()
+{
+    var details = $('#show').serialize();
+
+    $.post('showBooks.php', details, function(data){
+
+        allBooks = JSON.parse(data);
+
+        showBooks(allBooks);
+    });
+}
+
+function downloadAuthors()
+{
+    var details = $('#show').serialize();
+
+    $.post('showAuthors.php', details, function(data){
+
+        allAuthors = JSON.parse(data);
+        //alert(data);
+        //showAuthors(allAuthors);
+    });
+}
+
+function downloadGenres()
+{
+    var details = $('#show').serialize();
+
+    $.post('showGenres.php', details, function(data){
+
+        allGenres = JSON.parse(data);
+
+        //showGenres(allGenres);
+    });
+}

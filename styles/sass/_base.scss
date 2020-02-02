@@ -1,0 +1,15 @@
+button, input
+        {
+            height: 40px;
+            width: 120px;
+
+            color: white;
+            font-weight: bold;
+
+            margin: 10px;
+
+            border: 4px solid;
+            background-color: $colorTransparent;
+
+            transition: all 0.2s ease-in-out;
+        }
