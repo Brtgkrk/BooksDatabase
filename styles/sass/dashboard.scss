@@ -1,0 +1,288 @@
+body
+{
+	margin: 0;
+}
+
+header
+{
+    height: 90vh;
+
+    background-image: url("");
+}
+
+nav
+{
+		height: 6vh;
+		width: 100;
+
+		background-color: rgba(48, 52, 69, 1);
+
+		margin-bottom: 1vh;
+}
+
+#customCheckL
+{
+		margin-left: 24px !important;
+}
+
+main
+{
+    /*========================================================
+     This pattern is downloaded from www.subtlepatterns.com
+     If you need more, that's where to get'em.
+     =======================================================*/
+    background-image: url("images/triangle-mosaic.png");
+
+		border-top: 12px solid #303445;
+
+    margin-top: 100px;
+
+		padding: 0 10vw 0 10vw;
+		text-align: justify;
+}
+
+/*  Buttons  */
+
+#reg-button
+{
+    width: 100%;
+    margin-top: 0.5vh;
+}
+
+#logout-button
+{
+		height: 4vh;
+		margin: 1vh;
+
+		font-size: 1.4vh;
+		color: 	whitesmoke;
+
+		background-color: #FF4A56;
+
+		border-radius: 0;
+
+		float: right;
+}
+
+/*   ---   */
+
+#login-button-canvas
+{
+		width: calc(2vh*10vw);
+    left: 32%;
+    margin-right: -30%;
+    transform: translate(-50%, -50%);
+}
+
+#register-button-canvas
+{
+		width: calc(2vh*10vw);
+    right: 40%;
+    margin-right: -30%;
+    transform: translate(-50%, -50%);
+}
+
+#arrow-down-button
+{
+    display: block;
+
+		position: absolute;
+    top: 80%;
+
+    text-decoration: none;
+    color: black;
+
+    left: 48%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+
+    animation: 1.2s infinite ease alternate bobbing;
+}
+
+.basic-button
+{
+	display: block;
+
+	position: absolute;
+    top: 40%;
+
+    text-decoration: none;
+    color: black;
+    font-size: 3vw;
+}
+
+.btn-quit
+{
+    width: 2vw;
+    height: 2vw;
+    padding: 0 2vw 2vw 0;
+
+    background-color: rgba(255,255,255, 0);
+    border: none;
+
+    cursor: pointer;
+
+    transition: .2s all ease-in-out;
+}
+
+.btn-quit:hover
+{
+    color: rgba(0,0,0, .4);
+}
+
+/*dashboard
+*/
+
+.mod-buttons
+{
+	height: 5vh;
+	width: 15vh;
+
+	font-size: 2vh;
+	padding: 1vh;
+
+	margin: 1vh 0 0 1vh;
+	border-radius: 0;
+}
+
+#show-books
+{
+
+		border-color: #268b3d;
+
+		background-color: #2a9d44;
+}
+
+#add-book
+{
+		border-color: #949292;
+
+		background-color: #7a7a7a;
+
+		margin-bottom: 2vh;
+}
+
+/*  Forms  */
+
+.logreg-form
+{
+    display: block;
+    width: 40vh;
+
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+
+		position: absolute;
+    top: -40%;
+
+    opacity: 0;
+}
+
+/*  Animations  */
+
+@keyframes bobbing
+{
+    from { transform: translate(0px, 0px); }
+    to { transform: translate(0px, 30px); }
+}
+
+/*   Tables   */
+
+tr
+{
+    transition: 0.2s all ease-in-out;
+}
+
+tr:hover
+{
+    cursor: pointer;
+    background-color: rgb(225,225,225);
+}
+
+th
+{
+    transition: 0.1s all ease-in-out;
+}
+
+th:hover
+{
+    cursor: pointer;
+    background-color: rgb(190,190,190);
+}
+
+.title
+{
+    width: 20%;
+}
+.a_name
+{
+    width: 15%;
+}
+.pages
+{
+    width: 5%;
+}
+.g_name
+{
+    width: 10%;
+}
+.completion
+{
+    width: 15%;
+}
+.rating
+{
+    width: 10%;
+}
+.description
+{
+    width: 25%;
+}
+
+#add-author-button
+{
+		transition: .2s all ease-in-out;
+}
+
+#add-author-button:hover
+{
+		cursor: pointer;
+}
+
+#add-genre-button:hover
+{
+		cursor: pointer;
+}
+
+/*   Spans   */
+
+#hello-span
+{
+		display: block;
+
+		float: left;
+
+		color: white;
+
+		font-size: 2vh;
+
+		padding: 1.5vh;
+}
+
+#search-div
+{
+		width: 300px;
+
+		margin: 1vh;
+}
+
+/*   Images   */
+
+#book-logo
+{
+		height: 4vh;
+		margin: 1vh;
+
+		float: left;
+}

@@ -4,11 +4,11 @@
 
     if(!isset($_SESSION['isLogged']))
     {
-        header('Location: index.php');
+        header('Location: ../index.php');
         exit();
     }
 
-    require_once "serverside/connect.php";
+    require_once "../serverside/connect.php";
 
     $connection = @new mysqli($host, $db_user, $db_password, $db_name);
     $connection->set_charset("utf8"); //utf8 encoding

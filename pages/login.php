@@ -4,11 +4,11 @@
 
     if((!isset($_POST['login'])) || (!isset($_POST['password'])))
     {
-        header('Location: index.php');
+        header('Location: ../index.html');
         exit();
     }
 
-    require_once "serverside/connect.php";
+    require_once "../serverside/connect.php";
 
     $connection = @new mysqli($host, $db_user, $db_password, $db_name);
 
@@ -54,7 +54,7 @@
                 else
                 {
                     echo "Niepoprawne haslo";
-                    header('Location: index.php');
+                    header('Location: ../index.html');
                     exit();
                 }
 
@@ -63,7 +63,7 @@
             {
                 $_SESSION['errorL'] = '<span style="color:red"><br />Nieprawidłowy login lub hasło!</span>';
                 //header('Location: index.php');
-                header('Location: index.php');
+                header('Location: ../index.html');
                 exit();
             }
         }

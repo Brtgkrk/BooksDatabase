@@ -25,23 +25,22 @@
 
     <title>Dashboard</title>
 
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="../styles/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../styles/css/dashboard.css">
+  <link rel="stylesheet" href="../styles/css/main.css">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-    <script src="js/jquery/jquery-3.4.1.min.js"></script>
+    <script src="../scripts/jquery/jquery-3.4.1.min.js"></script>
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
-    <link rel="icon" href="logo.svg" />
+    <link rel="icon" href="../images/favicon.svg" />
 
 </head>
 <body>
 
 <nav>
 
-  <img src="logo.svg" alt="book logo" id="book-logo">
+  <img src="../images/favicon.svg" alt="book logo" id="book-logo">
 
   <?php echo "<span id='hello-span'>Witaj ".$_SESSION['user']."!</span>"; ?>
 
@@ -229,13 +228,13 @@
     </div>
 
 
-    <script src="js/scripts/alertController.js">
+    <script src="../scripts/javaScript/alertController.js">
 
     </script>
 
-    <script src="js/scripts/bookManagement.js"></script>
-    <script src="js/scripts/bookEditor.js"></script>
-    <script src="js/scripts/AGEdit.js"></script>
+    <script src="../scripts/javaScript/bookManagement.js"></script>
+    <script src="../scripts/javaScript/bookEditor.js"></script>
+    <script src="../scripts/javaScript/AGEdit.js"></script>
 
 </body>
 </html>
