@@ -1,15 +1,28 @@
 button, input
         {
             height: 40px;
-            width: 120px;
+            width: 150px;
 
-            color: white;
+            color: $colorWhite;
             font-weight: bold;
 
             margin: 10px;
 
             border: 4px solid;
-            background-color: $colorTransparent;
+            background-color: $colorGray;
 
             transition: all 0.2s ease-in-out;
         }
+.b-transparent
+{
+    background-color: $colorTransparent;
+}
+.b-red
+{
+    background-color: $colorRed;
+}
+.b-green
+{
+    background-color: $colorGreen;
+    border-color: $colorGreenDark;
+}
