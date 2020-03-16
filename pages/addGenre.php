@@ -9,7 +9,7 @@
         exit();
     }
 
-    require_once "serverside/connect.php";
+    require_once "../serverside/connect.php";
 
     $connection = @new mysqli($host, $db_user, $db_password, $db_name);
 
