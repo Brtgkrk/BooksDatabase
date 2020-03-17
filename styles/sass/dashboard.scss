@@ -1,74 +1,50 @@
-body
-{
-	margin: 0;
-}
-
-header
-{
-    height: 90vh;
-
-    background-image: url("");
-}
-
+@import "variables";
+@import "base";
 nav
 {
-		height: 6vh;
-		width: 100;
-
-		background-color: rgba(48, 52, 69, 1);
-
-		margin-bottom: 1vh;
+	height: 50px;
+	background-color: $colorDark;
 }
 
-#customCheckL
+#n-left
 {
-		margin-left: 24px !important;
+    width: 300px;
+    float: left;
 }
 
-main
+#n-right
 {
-    /*========================================================
-     This pattern is downloaded from www.subtlepatterns.com
-     If you need more, that's where to get'em.
-     =======================================================*/
-    background-image: url("images/triangle-mosaic.png");
-
-		border-top: 12px solid #303445;
-
-    margin-top: 100px;
-
-		padding: 0 10vw 0 10vw;
-		text-align: justify;
+    width: calc(100vw - 300px);
+    float: right;
 }
 
-/*  Buttons  */
-
-#reg-button
+.dark-input
 {
-    width: 100%;
-    margin-top: 0.5vh;
+    color: $colorWhite;
+}
+
+#search-select
+{
+    height: 30px;
+    
+    color: $colorWhite;
+    background-color: $colorGrayDark;
+
+    border: none;
+    appearance: none;
 }
 
 #logout-button
 {
-		height: 4vh;
-		margin: 1vh;
-
-		font-size: 1.4vh;
-		color: 	whitesmoke;
-
-		background-color: #FF4A56;
-
-		border-radius: 0;
-
-		float: right;
+	float: right;
+    margin: 5px 20px 0 0;
 }
 
 /*   ---   */
 
 #login-button-canvas
 {
-		width: calc(2vh*10vw);
+	width: calc(2vh*10vw);
     left: 32%;
     margin-right: -30%;
     transform: translate(-50%, -50%);
@@ -153,14 +129,6 @@ main
 		background-color: #2a9d44;
 }
 
-#add-book
-{
-		border-color: #949292;
-
-		background-color: #7a7a7a;
-
-		margin-bottom: 2vh;
-}
 
 /*  Forms  */
 
@@ -265,7 +233,7 @@ th:hover
 
 		color: white;
 
-		font-size: 2vh;
+		font-size: 16px;
 
 		padding: 1.5vh;
 }
@@ -274,15 +242,15 @@ th:hover
 {
 		width: 300px;
 
-		margin: 1vh;
+		margin: 10px 20px 10px 0;
 }
 
 /*   Images   */
 
 #book-logo
 {
-		height: 4vh;
-		margin: 1vh;
+		height: 30px;
+		margin: 10px 0 10px 20px;
 
 		float: left;
 }

@@ -1,15 +1,15 @@
 button, input
         {
-            height: 40px;
-            width: 150px;
+            height: 30px;
+            width: 120px;
 
-            color: $colorWhite;
             font-weight: bold;
 
-            margin: 10px;
+            margin: 10px !important;
 
             border: 4px solid;
             background-color: $colorGray;
+            border-color: $colorGrayDark;
 
             transition: all 0.2s ease-in-out;
         }
@@ -19,10 +19,20 @@ button, input
 }
 .b-red
 {
+    color: $colorWhite;
     background-color: $colorRed;
+    border-color: $colorRedDark;
 }
 .b-green
 {
+    color: $colorWhite;
     background-color: $colorGreen;
     border-color: $colorGreenDark;
+}
+
+.b-gray
+{
+    color: $colorWhite;
+    background-color: $colorGray;
+    border-color: $colorGrayDark;
 }

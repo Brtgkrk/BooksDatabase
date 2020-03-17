@@ -43,11 +43,42 @@
 
 <nav>
 
-  <img src="../images/favicon.svg" alt="book logo" id="book-logo">
+  <div id="n-left">
 
-  <?php echo "<span id='hello-span'>Witaj ".$_SESSION['user']."!</span>"; ?>
+    <img src="../images/favicon.svg" alt="book logo" id="book-logo">
 
-  <a href="logout.php"> <input class="btn" id="logout-button" type="button" value="Wyloguj się"/> </a>
+    <?php echo "<span id='hello-span'>Witaj ".$_SESSION['user']."!</span>"; ?>
+
+  </div>
+  <div id="n-right">
+
+    <form action="showBooks.php" id="show" method="post">
+
+      <input class="dark-input" id="find-book" name="book-name" type="text" placeholder="wyszukaj">
+
+      <select id="search-select">
+
+          <option>Nazwie książki</option>
+          <option>Autorze</option>
+          <option>Liczbie stron</option>
+          <option>Gatunku</option>
+          <option>Liczbie przeczytanych stron</option>
+          <option>Ocenie</option>
+          <option>Opisie</option>
+
+      </select>
+
+      <input class="dark-input" id="add-book" data-toggle='modal' data-target='#book-modal' id="add-book-button" type="button" value="Dodaj książkę">
+      <input class="dark-input" id="add-book" data-toggle='modal' data-target='#author-modal' id="add-author-button" type="button" value="Dodaj autora">
+      <input class="dark-input" id="add-book" data-toggle='modal' data-target='#genre-modal' id="add-genre-button" type="button" value="Dodaj gatunek">
+
+      <input class="b-green" id="show-books" type="submit" value="Pokaż książki">
+
+      <a href="logout.php"> <input class="b-red" id="logout-button" type="button" value="Wyloguj się"/> </a>
+
+    </form>
+
+    </div>
 
 </nav>
 
@@ -187,32 +218,6 @@
         </div>
 
 </div>
-
-    <form action="showBooks.php" id="show" method="post">
-
-    <input class="btn btn-primary mod-buttons" id="show-books" type="submit" value="Pokaż książki">
-    <br /><input class="btn btn-secondary mod-buttons" id="add-book" data-toggle='modal' data-target='#book-modal' id="add-book-button" type="button" value="Dodaj książkę">
-
-    <div id="search-div">
-
-      <h5>Wyszukiwanie</h5>
-
-      <select class="form-control" id="serach-select">
-
-          <option>Nazwie książki</option>
-          <option>Autorze</option>
-          <option>Liczbie stron</option>
-          <option>Gatunku</option>
-          <option>Liczbie przeczytanych stron</option>
-          <option>Ocenie</option>
-          <option>Opisie</option>
-
-      </select>
-
-      <input class="form-control" id="find-book" name="book-name" type="text" placeholder="wyszukaj">
-
-    </div>
-
 
     </form>
 

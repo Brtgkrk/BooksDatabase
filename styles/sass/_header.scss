@@ -17,6 +17,11 @@ header
     }
     nav
     {
+        button
+        {
+            color: $colorWhite;
+            height: 40px;
+        }
         button:hover
         {
             color: $colorDark;
@@ -38,4 +43,10 @@ header
             background-color: $colorGray;
         }
     }
+}
+
+#alert-btn
+{
+    margin: 0 !important;
+    color: black !important;
 }
