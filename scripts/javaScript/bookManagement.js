@@ -1,4 +1,5 @@
 var allBooks;
+var allBooks;
 var allAuthors;
 var allGenres;
 
@@ -25,7 +26,7 @@ $(document).ready(function () {
 $("#show").on('submit', function (e) {
     e.preventDefault();
     var details = $('#show').serialize();
-    $.post('showBooks.php', details, function (data) {
+    $.post('pages/showBooks.php', details, function (data) {
         allBooks = JSON.parse(data);
         showBooks(allBooks);
     });
@@ -59,12 +60,16 @@ function showBooks(responseObject) {
         else toFind = item.title;
 
         if (toFind.toLocaleLowerCase().indexOf(findText) >= 0 || findText == undefined || findText == "") {
-            newContent += "<tr data-toggle='modal' data-target='#book-modal' onclick='bookEdit(\"" + item.bookID + "\")'>";
-            newContent += "<td class='title'>" + item.title + "</td>";
+            newContent += "<tr data-toggle='modal' data-target='#book-modal' onclick='bookEdit(\"" + item.bookID + "\")'";
+            if (item.completion >= 100) newContent += " class='read'>";
+            else if (item.completion < 100 && item.completion > 0) newContent += " class='reading'>";
+            else newContent += ">";
+            newContent += "<td class='title'><b>" + item.title + "</b></td>";
             newContent += "<td class='a_name'>" + item.a_name + "</td>";
-            newContent += "<td class='pages'>" + item.pages + "</td>";
             newContent += "<td class='g_name'>" + item.g_name + "</td>";
-            newContent += "<td class='completion'>" + item.completion + "</td>";
+            newContent += "<td class='completion'>" + item.completion + "%";
+            if (item.completion > 0 && item.completion < 100)
+            newContent += "<hr class='lineCompletion' style='width:" + item.completion + "%; class='lineCompletion'></td>";
             newContent += "<td class='rating'>" + item.rating + "</td>";
             newContent += "<td class='description'>" + item.description + "</td>";
             newContent += "</tr>";
@@ -141,7 +146,7 @@ function compareValues(key, order = true) {
 function downloadBooks() {
     var details = $('#show').serialize();
 
-    $.post('showBooks.php', details, function (data) {
+    $.post('pages/showBooks.php', details, function (data) {
 
         allBooks = JSON.parse(data);
 
@@ -152,7 +157,7 @@ function downloadBooks() {
 function downloadAuthors() {
     var details = $('#show').serialize();
 
-    $.post('showAuthors.php', details, function (data) {
+    $.post('pages/showAuthors.php', details, function (data) {
 
         //alert(data);
         allAuthors = JSON.parse(data);
@@ -164,7 +169,7 @@ function downloadAuthors() {
 function downloadGenres() {
     var details = $('#show').serialize();
 
-    $.post('showGenres.php', details, function (data) {
+    $.post('pages/showGenres.php', details, function (data) {
 
         allGenres = JSON.parse(data);
 

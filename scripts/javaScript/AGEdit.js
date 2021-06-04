@@ -22,7 +22,7 @@ $("#add-author-form").on('submit', function(e) {
     {
       var details = $("#add-author-form").serialize();
 
-      $.post('addAuthor.php', details, function(data) {
+      $.post('pages/addAuthor.php', details, function(data) {
           showAlert(data);
           downloadAuthors();
           var currentAuthor = $("#author-modal-aname").val();
@@ -56,7 +56,7 @@ $("#add-genre-form").on('submit', function(e) {
     {
       var details = $("#add-genre-form").serialize();
 
-      $.post('addGenre.php', details, function(data) {
+      $.post('pages/addGenre.php', details, function(data) {
           showAlert(data);
           downloadGenres();
           var currentGenre = $("#genre-modal-aname").val();

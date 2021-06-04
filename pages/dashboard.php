@@ -1,85 +1,28 @@
-<?php
-
-    session_start();
-
-    if(!isset($_SESSION['isLogged']))
-    {
-        header('Location: ../index.html');
-        exit();
-    }
-
-?>
-
-<!-- This file is full of trash, please dont judge me, I swear i will clean up here in the future -->
-
-<!DOCTYPE html>
-<html>
-<head lang="pl">
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <meta name="author" content="Jakub Krok">
-    <meta name="description" content="Site for management your books.">
-
-    <title>Dashboard</title>
-
-	<link rel="stylesheet" href="../styles/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../styles/css/dashboard.css">
-  <link rel="stylesheet" href="../styles/css/main.css">
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
-    <script src="../scripts/jquery/jquery-3.4.1.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-    <link rel="icon" href="../images/favicon.svg" />
-
-</head>
-<body>
-
 <nav>
 
   <div id="n-left">
-
-    <img src="../images/favicon.svg" alt="book logo" id="book-logo">
-
-    <?php echo "<span id='hello-span'>Witaj ".$_SESSION['user']."!</span>"; ?>
-
+    <img src="images/favicon.svg" alt="book logo" id="book-logo">
+    <?php session_start(); echo "<span id='hello-span'>Witaj ".$_SESSION['user']."!</span>"; ?>
   </div>
+
   <div id="n-right">
-
     <form action="showBooks.php" id="show" method="post">
-
       <input class="dark-input" id="find-book" name="book-name" type="text" placeholder="wyszukaj">
-
       <select id="search-select">
-
-          <option>Nazwie książki</option>
+          <option>Nazwie</option>
           <option>Autorze</option>
-          <option>Liczbie stron</option>
           <option>Gatunku</option>
-          <option>Liczbie przeczytanych stron</option>
+          <option>Procencie ukończenia</option>
           <option>Ocenie</option>
           <option>Opisie</option>
-
       </select>
-
       <input class="dark-input" id="add-book" data-toggle='modal' data-target='#book-modal' id="add-book-button" type="button" value="Dodaj książkę">
       <input class="dark-input" id="add-book" data-toggle='modal' data-target='#author-modal' id="add-author-button" type="button" value="Dodaj autora">
       <input class="dark-input" id="add-book" data-toggle='modal' data-target='#genre-modal' id="add-genre-button" type="button" value="Dodaj gatunek">
-
       <input class="b-green" id="show-books" type="submit" value="Pokaż książki">
-
-      <a href="logout.php"> <input class="b-red" id="logout-button" type="button" value="Wyloguj się"/> </a>
-
+      <input class="b-red" id="logout-button" type="button" value="Wyloguj się"/>
     </form>
-
     </div>
-
 </nav>
 
 
@@ -219,13 +162,11 @@
 
 </div>
 
-    </form>
-
     <div class="table-responsive">
 
       <table class='table table-striped'>
 
-          <tr><th class="title" id='sort-title'>Nazwa książki</th><th class="a_name" id='sort-author'>Autor</th><th class="pages" id='sort-pages'>Stron</th><th class="g_name" id='sort-genre'>Gatunek</th><th class="completion" id='sort-completion'>Przeczytanych stron</th><th class="rating" id='sort-rating'>Ocena</th><th class="description">Opis</th></tr>
+          <tr><th class="title" id='sort-title'>Nazwa</th><th class="a_name" id='sort-author'>Autor</th><th class="g_name" id='sort-genre'>Gatunek</th><th class="completion" id='sort-completion'>Ukończenie</th><th class="rating" id='sort-rating'>Ocena</th><th class="description">Opis</th></tr>
 
       </table>
 
@@ -237,13 +178,11 @@
     </div>
 
 
-    <script src="../scripts/javaScript/alertController.js">
+    <script src="scripts/javaScript/alertController.js">
 
     </script>
 
-    <script src="../scripts/javaScript/bookManagement.js"></script>
-    <script src="../scripts/javaScript/bookEditor.js"></script>
-    <script src="../scripts/javaScript/AGEdit.js"></script>
-
-</body>
-</html>
+    <script src="scripts/javaScript/bookManagement.js"></script>
+    <script src="scripts/javaScript/bookEditor.js"></script>
+    <script src="scripts/javaScript/AGEdit.js"></script>
+    <script src="scripts/javaScript/logout.js"></script>

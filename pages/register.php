@@ -1,71 +1,123 @@
 <?php
 
     session_start();
+    $data = $_POST;
 
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    /* Error Code Explanation:
+        0 - One of the fields is empty
+        1 - Username has less than 3 letters or has more than 20
+        2 - Username contain non alphanumeric letter/s
+        3 - Password has less than 6 letter or more than 50
+        4 - Password don't match
+        5 - Email is not valid
+        6 - Rules is not accepted
+        7 - Username is taken
+        8 - Registration Done!
+        9 - Script Error
+    */
 
-    if((strlen($username)<3) || (strlen($username)>20))
+    if (empty($username = $data['username']) ||
+        empty($password = $data['password']) ||
+        empty($password_confirm = $data['password_confirm']) ||
+        empty($email = $data['email']))
+        {
+            exit('0');
+        }
+
+    // Check Errors
+
+    if ((strlen($username)<3) || (strlen($username)>20))
     {
-        echo "Nazwa użytkownika musi mieć od 3 do 20 znaków.";
-        exit();
+        exit('1');
     }
-    if(ctype_alnum($username)==false)
+    if (ctype_alnum($username)==false)
     {
-        echo "Nazwa użytkownika może posiadać wyłącznie znaki alfanumeryczne.";
-        exit();
+
+        exit('2');
     }
 
-    if((strlen($password)<5) || (strlen($password)>20))
+    if ((strlen($password)<6) || (strlen($password)>50))
     {
-        echo "Hasło musi mieć od 5 do 20 znaków";
-        exit();
+        exit('3');
+    }
+
+    if ($password !== $password_confirm)
+    {
+        exit('4');
     }
 
     $password_h = password_hash($password, PASSWORD_DEFAULT);
 
-    if(!isset($_POST['reg']))
+    if (!checkEmail($email))
     {
-        echo "Musisz zaakceptować regulamin!";
-        exit();
+        exit('5');
+    }
+    
+    if (!isset($_POST['reg']))
+    {
+        exit('6');
     }
 
-    require_once "../serverside/connect.php";
+    // Connect to database
 
-    $connection = @new mysqli($host, $db_user, $db_password, $db_name);
+    require_once "../serverside/connect.php"; // You can set your database prefs in this file, if it doesn't exist just create it
 
-    if($connection->connect_errno!=0)
+    $dsn = "mysql:host=$host;dbname=$db_name";
+
+    try
     {
-        echo "Error ".$connection->connect_errno;
+        $connection = new PDO($dsn, $db_user, $db_password);
     }
-    else
+    catch (PDOException $exception)
     {
-        //is username is free
-        $username = htmlentities($username, ENT_QUOTES, "UTF-8");
+        exit ('Connection failied: ' . $exception->getMessage());
+    }
 
-        if($result = @$connection->query(sprintf("SELECT COUNT(*) FROM users WHERE username = '%s'",
-        mysqli_real_escape_string($connection, $username)
-        )))
+    // Check is username is free
+
+    $statement = $connection->prepare('SELECT * FROM users WHERE username = :username OR email = :email');
+
+    if ($statement)
+    {
+        $statement->execute([
+            ':username' => $username,
+            ':email' => $email,
+        ]);
+
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        if (!empty($result))
         {
-            $how_many = mysqli_fetch_assoc($result)['COUNT(*)'];
-            if($how_many > 0)
-            {
-                echo "Nazwa użytkownika zajęta";
-            }
-            else
-            {
-                if($connection->query(sprintf("INSERT INTO users VALUES('', '%s', '%s')",
-                mysqli_real_escape_string($connection, $username),
-                mysqli_real_escape_string($connection, $password_h)
-                )))
-                echo "Użytkownik został dodany pomyślnie";
-            }
+            exit('7');
         }
-        else
-        {
-            echo "Error";
-        }
-        $connection->close();
     }
+
+    // Insert data into database
+
+    $statement = $connection->prepare('INSERT INTO users (ID, username, password, email) VALUES (:id, :username, :password, :email)');
+
+    if ($statement)
+    {
+        $result = $statement->execute([
+            ':id' => '',
+            ':username' => $username,
+            ':password' => $password_h,
+            ':email' => $email,
+        ]);
+    }
+
+    if ($result) {
+        exit('8');
+    }
+    
+    exit('9'); // This is display only if is error in code
+
+    // Check correctness of email account
+
+    function checkEmail($email) {
+        $find1 = strpos($email, '@');
+        $find2 = strpos($email, '.');
+        return ($find1 !== false && $find2 !== false && $find2 > $find1);
+     }
 
  ?>

@@ -2,7 +2,9 @@
 @import "base";
 nav
 {
-	height: 50px;
+	display: flex;
+  flex-direction: column;
+  min-height: 50px;
 	background-color: $colorDark;
 }
 
@@ -14,7 +16,7 @@ nav
 
 #n-right
 {
-    width: calc(100vw - 300px);
+    width: calc(100vw - 320px);
     float: right;
 }
 
@@ -36,7 +38,6 @@ nav
 
 #logout-button
 {
-	float: right;
     margin: 5px 20px 0 0;
 }
 
@@ -141,7 +142,7 @@ nav
     margin-right: -50%;
     transform: translate(-50%, -50%);
 
-		position: absolute;
+	position: absolute;
     top: -40%;
 
     opacity: 0;
@@ -179,6 +180,25 @@ th:hover
     background-color: rgb(190,190,190);
 }
 
+.reading
+{
+    background-color: $colorReading;
+}
+
+.read
+{
+    background-color: $colorRead;
+}
+
+.lineCompletion
+{
+    background-color: $colorRead;
+    border: none;
+
+    margin:0; 
+    height:5px;
+}
+
 .title
 {
     width: 20%;
@@ -187,17 +207,13 @@ th:hover
 {
     width: 15%;
 }
-.pages
-{
-    width: 5%;
-}
 .g_name
 {
-    width: 10%;
+    width: 15%;
 }
 .completion
 {
-    width: 15%;
+    width: 10%;
 }
 .rating
 {
@@ -205,7 +221,7 @@ th:hover
 }
 .description
 {
-    width: 25%;
+    width: 30%;
 }
 
 #add-author-button

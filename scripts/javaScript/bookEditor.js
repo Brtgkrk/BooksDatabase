@@ -43,7 +43,7 @@ function sendForm(another_data) {
 
     details = details + "&book_id=" + actualBookID + "&author_id=" + author + "&genre_id=" + genre;
 
-    $.post('updateData.php', details, function (data) {
+    $.post('pages/updateData.php', details, function (data) {
         showAlert(data);
     });
     downloadBooks();
