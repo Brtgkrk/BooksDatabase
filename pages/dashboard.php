@@ -1,34 +1,42 @@
-<nav>
+<nav class="container-fluid">
+  <form action="showBooks.php" id="show" method="post">
 
-  <div id="n-left">
-    <img src="images/favicon.svg" alt="book logo" id="book-logo">
-    <?php session_start(); echo "<span id='hello-span'>Witaj ".$_SESSION['user']."!</span>"; ?>
-  </div>
+    <input class="site-menu-trigger nav-input" type="button" value="Menu">
 
-  <div id="n-right">
-    <form action="showBooks.php" id="show" method="post">
-      <input class="dark-input" id="find-book" name="book-name" type="text" placeholder="wyszukaj">
-      <select id="search-select">
-          <option>Nazwie</option>
-          <option>Autorze</option>
-          <option>Gatunku</option>
-          <option>Procencie ukończenia</option>
-          <option>Ocenie</option>
-          <option>Opisie</option>
-      </select>
-      <input class="dark-input" id="add-book" data-toggle='modal' data-target='#book-modal' id="add-book-button" type="button" value="Dodaj książkę">
-      <input class="dark-input" id="add-book" data-toggle='modal' data-target='#author-modal' id="add-author-button" type="button" value="Dodaj autora">
-      <input class="dark-input" id="add-book" data-toggle='modal' data-target='#genre-modal' id="add-genre-button" type="button" value="Dodaj gatunek">
-      <input class="b-green" id="show-books" type="submit" value="Pokaż książki">
-      <input class="b-red" id="logout-button" type="button" value="Wyloguj się"/>
-    </form>
+    <div class="site-menu">
+      <ul>
+
+        <li><img src="images/favicon.svg" alt="book logo" id="book-logo">
+        <?php session_start(); echo "<span id='hello-span'>Witaj ".$_SESSION['user']."!</span>"; ?></li>
+        <li><input class="nav-input b-red" id="logout-button" type="button" value="Wyloguj się"/></li>
+        <li>Element 3</li>
+        
+        
+        
+
+      </ul>
     </div>
+
+    <input class="width-200" id="find-book" name="book-name" type="text" placeholder="wyszukaj">
+
+    <select class="width-200" id="search-select">
+        <option>Nazwa</option>
+        <option>Autor</option>
+        <option>Gatunek</option>
+        <option>Opis</option>
+    </select>
+
+    <input class="nav-input b-green" id="show-books" type="submit" value="Pokaż książki">
+
+    <input class="nav-input" id="add-book" data-toggle='modal' data-target='#book-modal' id="add-book-button" type="button" value="Dodaj książkę">
+  
+  </form>
 </nav>
+
 
 
 <!-- Alert div loader -->
 <div id="alert-show"></div>
-
 
 <div class="container">
 
@@ -159,30 +167,32 @@
             </div>
           </div>
         </div>
+</div>
+
+<div class="table-responsive">
+
+  <table class='table table-striped'>
+
+      <tr>
+        <th class="title" id='sort-title'>Nazwa</th>
+        <th class="a_name" id='sort-author'>Autor</th>
+        <th class="g_name" id='sort-genre'>Gatunek</th>
+        <th class="completion" id='sort-completion'>Ukończenie</th>
+        <th class="rating" id='sort-rating'>Ocena</th>
+        <th class="description">Opis</th>
+      </tr>
+
+  </table>
+
+  <table class="table table-striped" id="content"></table>
 
 </div>
 
-    <div class="table-responsive">
+<script src="scripts/javaScript/alertController.js">
 
-      <table class='table table-striped'>
+</script>
 
-          <tr><th class="title" id='sort-title'>Nazwa</th><th class="a_name" id='sort-author'>Autor</th><th class="g_name" id='sort-genre'>Gatunek</th><th class="completion" id='sort-completion'>Ukończenie</th><th class="rating" id='sort-rating'>Ocena</th><th class="description">Opis</th></tr>
-
-      </table>
-
-      <table class="table table-striped" id="content">
-
-      </table>
-
-
-    </div>
-
-
-    <script src="scripts/javaScript/alertController.js">
-
-    </script>
-
-    <script src="scripts/javaScript/bookManagement.js"></script>
-    <script src="scripts/javaScript/bookEditor.js"></script>
-    <script src="scripts/javaScript/AGEdit.js"></script>
-    <script src="scripts/javaScript/logout.js"></script>
+<script src="scripts/javaScript/bookManagement.js"></script>
+<script src="scripts/javaScript/bookEditor.js"></script>
+<script src="scripts/javaScript/AGEdit.js"></script>
+<script src="scripts/javaScript/logout.js"></script>

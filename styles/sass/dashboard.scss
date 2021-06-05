@@ -1,28 +1,56 @@
 @import "variables";
 @import "base";
+
+body
+{
+    overflow: hidden;
+}
+
+/*   NAV   */
+
 nav
 {
 	display: flex;
-  flex-direction: column;
-  min-height: 50px;
+    flex-direction: column;
+    min-height: 50px;
 	background-color: $colorDark;
 }
 
-#n-left
+#book-logo
 {
-    width: 300px;
+    height: 30px;
+    margin: 14px 0 0 10px;
+
     float: left;
 }
 
-#n-right
+#hello-span
 {
-    width: calc(100vw - 320px);
-    float: right;
+    display: block;
+
+    float: left;
+
+    color: white;
+
+    font-size: 16px;
+
+    padding: 14px;
 }
 
-.dark-input
+.nav-input
 {
     color: $colorWhite;
+    min-width: fit-content;
+    min-height: 36px;
+}
+
+.width-200
+{
+    color: $colorWhite;
+    width: 200px;
+    min-height: 32px;
+    margin: 10px;
+    float: inherit;
 }
 
 #search-select
@@ -39,6 +67,52 @@ nav
 #logout-button
 {
     margin: 5px 20px 0 0;
+}
+
+/*   Hamburger menu   */
+
+.site-menu-trigger
+{
+    float: left;
+}
+
+.site-menu
+{
+    display: flex;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: -$menuSize;
+    height: 100%;
+    width: $menuSize;
+    background: $colorDark;
+    transform:translateX(0%);
+    transition: 0.3s transform ease-in-out;
+}
+
+.site-menu ul
+{
+    padding: 0;
+    list-style-type: none;
+    margin: 0 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+.site-menu li
+{
+    margin-bottom: 20px;
+    color: $colorDark;
+    border-radius: 5px;
+    flex-basis: 100%;
+    display: flex;
+    height: 30px;
+}
+
+.site-menu-trigger:focus ~ .site-menu, .site-menu:hover
+{
+   transform: translateX(100%);
 }
 
 /*   ---   */
@@ -121,15 +195,6 @@ nav
 	margin: 1vh 0 0 1vh;
 	border-radius: 0;
 }
-
-#show-books
-{
-
-		border-color: #268b3d;
-
-		background-color: #2a9d44;
-}
-
 
 /*  Forms  */
 
@@ -241,19 +306,6 @@ th:hover
 
 /*   Spans   */
 
-#hello-span
-{
-		display: block;
-
-		float: left;
-
-		color: white;
-
-		font-size: 16px;
-
-		padding: 1.5vh;
-}
-
 #search-div
 {
 		width: 300px;
@@ -263,10 +315,4 @@ th:hover
 
 /*   Images   */
 
-#book-logo
-{
-		height: 30px;
-		margin: 10px 0 10px 20px;
 
-		float: left;
-}

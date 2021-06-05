@@ -47,6 +47,15 @@ function showBooks(responseObject) {
 
     var newContent = '';
 
+    /*newContent += "<tr>"
+        + "<th class='title' id='sort-title'>Nazwa</th>"
+        + "<th class='a_name' id='sort-author'>Autor</th>"
+        + "<th class='g_name' id='sort-genre'>Gatunek</th>"
+        + "<th class='completion' id='sort-completion'>Ukończenie</th>"
+        + "<th class='rating' id='sort-rating'>Ocena</th>"
+        + "<th class='description'>Opis</th>"
+        + "</tr>";*/
+
     responseObject.forEach(function (item, index) {
 
         var toFind;
@@ -69,7 +78,7 @@ function showBooks(responseObject) {
             newContent += "<td class='g_name'>" + item.g_name + "</td>";
             newContent += "<td class='completion'>" + item.completion + "%";
             if (item.completion > 0 && item.completion < 100)
-            newContent += "<hr class='lineCompletion' style='width:" + item.completion + "%; class='lineCompletion'></td>";
+                newContent += "<hr class='lineCompletion' style='width:" + item.completion + "%; class='lineCompletion'></td>";
             newContent += "<td class='rating'>" + item.rating + "</td>";
             newContent += "<td class='description'>" + item.description + "</td>";
             newContent += "</tr>";
