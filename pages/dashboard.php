@@ -4,17 +4,32 @@
     <input class="site-menu-trigger nav-input" type="button" value="Menu">
 
     <div class="site-menu">
-      <ul>
 
-        <li><img src="images/favicon.svg" alt="book logo" id="book-logo">
-        <?php session_start(); echo "<span id='hello-span'>Witaj ".$_SESSION['user']."!</span>"; ?></li>
-        <li><input class="nav-input b-red" id="logout-button" type="button" value="Wyloguj się"/></li>
-        <li>Element 3</li>
-        
-        
-        
+      <div>
+        <img src="images/favicon.svg" alt="book logo" id="book-logo">
+        <?php session_start(); echo "<span id='hello-span'>Witaj ".$_SESSION['user']."!</span>"; ?>
+        <input class="nav-input b-red" id="logout-button" type="button" value="Wyloguj się"/>
+      </div>
+      
+      <form action="index.php" class="" id="change-preferences-form" method="post">
 
-      </ul>
+        <div>
+          <input type="checkbox" class="site-menu-check-input" id="showReadingBooks" name="b_reading">
+          <label class="form-check-label" for="showReadingBooks">Pokaż aktualnie czytane książki</label>
+        </div>
+
+        <div>
+          <input type="checkbox" class="site-menu-check-input" id="showQuequeBooks" name="b_quequed">
+          <label class="form-check-label" for="showQuequeBooks">Pokaż książki do przeczytania</label>
+        </div>
+
+        <div>
+          <input type="checkbox" class="site-menu-check-input" id="showReadBooks" name="b_read">
+          <label class="form-check-label" for="showReadBooks">Pokaż przeczytane książki</label>
+        </div>
+
+      </form>
+
     </div>
 
     <input class="width-200" id="find-book" name="book-name" type="text" placeholder="wyszukaj">

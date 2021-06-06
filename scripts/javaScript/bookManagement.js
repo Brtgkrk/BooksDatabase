@@ -1,5 +1,4 @@
 var allBooks;
-var allBooks;
 var allAuthors;
 var allGenres;
 
@@ -16,6 +15,10 @@ var searchGenre = "Gatunku";
 var searchCompletion = "Liczbie przeczytanych stron";
 var searchRating = "Ocenie";
 var searchDescription = "Opisie"; //Ad autodetection
+
+let prefShowReadingBooks;
+let prefShowQuequeBooks;
+let prefShowReadBooks;
 
 $(document).ready(function () {
     downloadBooks();
@@ -41,6 +44,37 @@ $('#serach-select').change(function () {
     findCat = $(this).val();
     showBooks(allBooks);
 });
+
+$('.site-menu-check-input').change(function () {
+    ($('#showReadingBooks').is(":checked")) ? prefShowReadingBooks = true : prefShowReadingBooks = false;
+    ($('#showQuequeBooks').is(":checked")) ? prefShowQuequeBooks = true : prefShowQuequeBooks = false;
+    ($('#showReadBooks').is(":checked")) ? prefShowReadBooks = true : prefShowReadBooks = false;
+
+    //alert("reading: " + prefShowReadingBooks + " quequed: " + prefShowQuequeBooks + " read: " + prefShowReadBooks);
+
+    //var details = $("#change-preferences-form").serialize();
+
+    $.post('pages/changePreferences.php', details, function (data) {
+        showAlert(data);
+        //downloadAuthors();
+        /*var currentAuthor = $("#author-modal-aname").val();
+        var addAuthor = true;
+        var authors = "";
+        allAuthors.forEach(function (item, index) {
+            authors += "<option>" + item.a_name + "</option>";
+            //alert("czy " + item.a_name + "==" + currentAuthor);
+            if (item.a_name == currentAuthor) addAuthor = false;
+        });
+
+        $("#add-author-modal").modal("hide");
+
+        if (addAuthor) authors += "<option>" + currentAuthor + "</option>";
+
+        $("#b-author").html(authors);
+        $("#b-author").val(currentAuthor);*/
+    });
+
+})
 
 function showBooks(responseObject) {
     allBooks.sort(compareValues(bookSortKey, bookSortOrder));
